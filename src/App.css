@@ -28,6 +28,10 @@
   justify-items: space-around;
 }
 
+.ReviewGrid {
+  width: fit-content;
+}
+
 .review-list img {
   width: 150px;
 }

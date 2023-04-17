@@ -16,7 +16,7 @@ const ReviewsList = () => {
     <section>
       <h2>List of Reviews!</h2>
       <Grid
-        className="ReviewGrind"
+        className="ReviewGrid"
         container
         columns={3}
         direction="row"
