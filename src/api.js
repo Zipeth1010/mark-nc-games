@@ -29,3 +29,11 @@ export const patchVotes = (review_id) => {
       return data.updatedReview;
     });
 };
+
+export const postComment = (comment, review_id) => {
+  return reviewsApi
+    .post(`/reviews/${review_id}/comments`, comment)
+    .then(({ data }) => {
+      return data.comment;
+    });
+};
