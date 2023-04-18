@@ -14,7 +14,7 @@ const FullReviewCard = () => {
       setDisplayReview(review);
       setIsLoading(false);
     });
-  }, []);
+  }, [review_id]);
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -22,11 +22,11 @@ const FullReviewCard = () => {
     <section className="FullReviewSection">
       <div className="FullReviewCard">
         <h3>{displayReview.title}</h3>
-        <img src={displayReview.review_img_url}></img>
+        <img src={displayReview.review_img_url} alt=""></img>
         <h4>Review Owner: {displayReview.owner}</h4>
         <p>{displayReview.review_body}</p>
         <p>Votes: {displayReview.votes}</p>
-        <p>Comment Count: {displayReview.comment_count}</p>
+        <p>Comments: {displayReview.comment_count}</p>
       </div>
       <section>
         <CommentList review_id={review_id} />
