@@ -29,11 +29,13 @@
 }
 
 .ReviewGrid {
+  justify-content: center;
   width: fit-content;
 }
 
 .review-list img {
   width: 150px;
+  height: 125px;
 }
 
 .MuiContainer-maxWidthXs {
@@ -53,4 +55,28 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.FullReviewDiv {
+  text-align: center;
+  align-items: center;
+  margin: 0px;
+}
+
+.FullReviewSection {
+  text-align: center;
+}
+
+.FullReviewCard img {
+  align-self: center;
+  max-width: 250px;
+}
+
+.FullReviewCard {
+  margin: 0px;
+  text-align: center;
+  align-items: center;
+  border: 3px solid black;
+  border-radius: 50px;
+  margin: 50px;
 }

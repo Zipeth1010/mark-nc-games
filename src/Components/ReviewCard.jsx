@@ -1,4 +1,5 @@
 import { Container } from "@mui/system";
+import { Link } from "react-router-dom";
 
 const ReviewCard = (review) => {
   // const viewReview (event) => {
@@ -12,9 +13,9 @@ const ReviewCard = (review) => {
       <h5 className="Header5">Review by: {review.owner}</h5>
       <p>Votes: {review.votes}</p>
       <p>Comment Count: {review.comment_count}</p>
-      <a>
+      <Link to={`/reviews/${review.review_id}`}>
         <button type="button">More Info</button>
-      </a>
+      </Link>
     </Container>
   );
 };

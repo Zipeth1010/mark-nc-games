@@ -5,14 +5,19 @@ import ReviewCard from "./ReviewCard";
 
 const ReviewsList = () => {
   const [reviewList, setReviewList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     getReviews().then((reviews) => {
       setReviewList(reviews);
+      setIsLoading(false);
     });
   }, []);
 
-  return (
+  return isLoading ? (
+    <p>Loading Reviews...</p>
+  ) : (
     <section>
       <h2>List of Reviews!</h2>
       <Grid
@@ -21,7 +26,7 @@ const ReviewsList = () => {
         columns={3}
         direction="row"
         alignContent="center"
-        columnSpacing={[-15]}
+        columnSpacing={[1]}
       >
         {reviewList.map((review) => {
           return (

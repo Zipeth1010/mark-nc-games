@@ -31,7 +31,7 @@ function App() {
         <Route
           path="/reviews/:review_id"
           element={
-            <div>
+            <div className="FullReviewDiv">
               <FullReviewCard />
             </div>
           }

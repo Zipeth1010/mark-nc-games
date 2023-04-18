@@ -18,7 +18,7 @@ const FullReviewCard = () => {
     return <p>Loading...</p>;
   }
   return (
-    <section>
+    <section className="FullReviewSection">
       <div className="FullReviewCard">
         <h3>{displayReview.title}</h3>
         <img src={displayReview.review_img_url}></img>
