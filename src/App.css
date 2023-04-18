@@ -80,3 +80,7 @@
   border-radius: 50px;
   margin: 50px;
 }
+
+.CommentGrid {
+  justify-content: center;
+}

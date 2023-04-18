@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getReviewById } from "../api";
+import CommentList from "./CommentList";
 
 const FullReviewCard = () => {
   const [displayReview, setDisplayReview] = useState([]);
@@ -27,6 +28,9 @@ const FullReviewCard = () => {
         <p>Votes: {displayReview.votes}</p>
         <p>Comment Count: {displayReview.comment_count}</p>
       </div>
+      <section>
+        <CommentList review_id={review_id} />
+      </section>
     </section>
   );
 };
