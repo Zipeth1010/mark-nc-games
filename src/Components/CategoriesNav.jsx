@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getCategories } from "../api";
 
@@ -10,19 +10,19 @@ const CategoriesNav = ({ setCategoryList, categoryList }) => {
   }, [setCategoryList]);
 
   return (
-    <nav>
+    <nav className="NavBar">
       <h3>Category List!</h3>
-      <ul className="CategoryNav">
+      <section className="CategoryNav">
         {categoryList.map((category) => {
           return (
-            <li key={category.slug}>
+            <button key={category.slug} className="NavButton">
               <Link to={`/reviews?category=${category.slug}`}>
                 {category.slug}
               </Link>
-            </li>
+            </button>
           );
         })}
-      </ul>
+      </section>
     </nav>
   );
 };

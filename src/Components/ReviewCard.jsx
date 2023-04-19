@@ -11,7 +11,9 @@ const ReviewCard = (review) => {
       <p>Votes: {review.votes}</p>
       <p>Comment Count: {review.comment_count}</p>
       <Link to={`/reviews/${review.review_id}`}>
-        <button type="button">More Info</button>
+        <button type="button" className="ReviewCardButton">
+          More Info
+        </button>
       </Link>
     </Container>
   );

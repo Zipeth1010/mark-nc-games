@@ -48,15 +48,6 @@
   width: fit-content;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .FullReviewDiv {
   text-align: center;
   align-items: center;
@@ -83,4 +74,31 @@
 
 .CommentGrid {
   justify-content: center;
+}
+
+.NavButton {
+  background-color: #e7e7e7;
+  color: black;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 50%;
+  transition-duration: 0.4s;
+}
+
+.NavButton:hover {
+  background-color: #00b847;
+  color: white;
+}
+
+.ReviewCardButton {
+  transition-duration: 0.1s;
+}
+
+.ReviewCardButton:hover {
+  background-color: black;
+  color: white;
 }
