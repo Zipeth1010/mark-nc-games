@@ -7,7 +7,7 @@ import * as api from "../api";
 
 const CommentList = ({ review_id }) => {
   const [commentList, setCommentList] = useState([]);
-  const [commentUsername, setCommentUsername] = useState("");
+  const [commentUsername, setCommentUsername] = useState("jessjelly");
   const [commentBody, setCommentBody] = useState("");
   const [successfulPost, setSuccessfulPost] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -16,7 +16,7 @@ const CommentList = ({ review_id }) => {
     getCommentsById(review_id).then((comments) => {
       setCommentList(comments);
     });
-  });
+  }, [setCommentList]);
 
   const commentToSubmit = {
     username: commentUsername,
@@ -26,7 +26,13 @@ const CommentList = ({ review_id }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsLoading(true);
-    api.postComment(commentToSubmit, review_id).then(() => {
+    api.postComment(commentToSubmit, review_id).then((postedComment) => {
+      setCommentList((commentList) => {
+        if (commentList.length === 0) {
+          return [postedComment];
+        }
+        return [postedComment, ...commentList];
+      });
       setSuccessfulPost(true);
       setIsLoading(false);
     });
@@ -73,7 +79,7 @@ const CommentList = ({ review_id }) => {
       >
         {commentList.map((comment) => {
           return (
-            <Grid item xs="auto" key={comment.comment_id}>
+            <Grid item xs={12} key={comment.comment_id}>
               <CommentCard {...comment} />
             </Grid>
           );
