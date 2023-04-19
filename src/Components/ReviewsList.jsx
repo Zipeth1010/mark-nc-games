@@ -30,7 +30,7 @@ const ReviewsList = () => {
       >
         {reviewList.map((review) => {
           return (
-            <Grid item xs="auto" key={review.review_id}>
+            <Grid item xs={12} key={review.review_id}>
               <ReviewCard {...review} />
             </Grid>
           );
