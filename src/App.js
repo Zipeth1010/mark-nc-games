@@ -4,8 +4,11 @@ import Header from "./Components/Header";
 import CategoriesNav from "./Components/CategoriesNav";
 import ReviewsList from "./Components/ReviewsList";
 import FullReviewCard from "./Components/FullReviewCard";
+import { useState } from "react";
 
 function App() {
+  const [categoryList, setCategoryList] = useState([]);
+
   return (
     <div className="App">
       <Header />
@@ -14,7 +17,10 @@ function App() {
           path="/"
           element={
             <div>
-              <CategoriesNav />
+              <CategoriesNav
+                setCategoryList={setCategoryList}
+                categoryList={categoryList}
+              />
               <ReviewsList />
             </div>
           }
@@ -23,7 +29,10 @@ function App() {
           path="/reviews"
           element={
             <div>
-              <CategoriesNav />
+              <CategoriesNav
+                setCategoryList={setCategoryList}
+                categoryList={categoryList}
+              />
               <ReviewsList />
             </div>
           }
