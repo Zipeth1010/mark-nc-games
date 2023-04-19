@@ -18,13 +18,12 @@ const CommentList = ({ review_id }) => {
     });
   }, [setCommentList]);
 
-  const commentToSubmit = {
-    username: commentUsername,
-    body: commentBody,
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
+    const commentToSubmit = {
+      username: commentUsername,
+      body: commentBody,
+    };
     setIsLoading(true);
     api.postComment(commentToSubmit, review_id).then((postedComment) => {
       setCommentList((commentList) => {
@@ -41,34 +40,41 @@ const CommentList = ({ review_id }) => {
   return (
     <section>
       <h3>Comments:</h3>
-      <section type="CommentForm">
-        <h4>Post your own comment:</h4>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="username">State your username:</label>
-          <input
-            id="username"
-            value={commentUsername}
-            onChange={(event) => {
-              setCommentUsername(event.target.value);
-            }}
-            required
-          />
-          <br></br>
-          <label htmlFor="body">Comment:</label>
-          <input
-            id="body"
-            value={commentBody}
-            onChange={(event) => {
-              setCommentBody(event.target.value);
-            }}
-            required
-          />
-          <button type="submit" disabled={isLoading}>
-            Submit!
-          </button>
-        </form>
-      </section>
-      {successfulPost ? <p>Thank you for commenting!</p> : null}
+      {successfulPost ? (
+        <p>Thank you for commenting!</p>
+      ) : (
+        <section type="CommentForm">
+          <h4>Post your own comment:</h4>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="username">State your username:</label>
+            <br></br>
+            <input
+              id="username"
+              value={commentUsername}
+              onChange={(event) => {
+                setCommentUsername(event.target.value);
+              }}
+              required
+            />
+            <br></br>
+            <label htmlFor="body">Comment:</label>
+            <br></br>
+            <textarea
+              id="body"
+              value={commentBody}
+              cols="28"
+              onChange={(event) => {
+                setCommentBody(event.target.value);
+              }}
+              required
+            />
+            <br></br>
+            <button type="submit" disabled={isLoading}>
+              Submit!
+            </button>
+          </form>
+        </section>
+      )}
       <Grid
         className="CommentGrid"
         container
