@@ -11,21 +11,27 @@ const ReviewsList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const category = searchParams.get("category");
+  const sortByQuery = searchParams.get("sort_by");
+  const orderQuery = searchParams.get("order");
 
   useEffect(() => {
     setIsLoading(true);
-    getReviews(category).then((reviews) => {
+    getReviews(category, sortByQuery, orderQuery).then((reviews) => {
       setReviewList(reviews);
       setIsLoading(false);
     });
-  }, [category]);
+  }, [category, sortByQuery, orderQuery]);
 
   return isLoading ? (
     <p>Loading Reviews...</p>
   ) : (
     <section>
       <h2>List of Reviews!</h2>
-      <Sortby reviewList={reviewList} setReviewList={setReviewList} />
+      <Sortby
+        reviewList={reviewList}
+        setReviewList={setReviewList}
+        category={category}
+      />
       <Grid
         className="ReviewGrid"
         container

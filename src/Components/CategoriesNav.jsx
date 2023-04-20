@@ -10,7 +10,7 @@ const CategoriesNav = ({ setCategoryList, categoryList }) => {
   }, [setCategoryList]);
 
   return (
-    <nav className="NavBar">
+    <section className="NavBar">
       <h3>Category List!</h3>
       <section className="CategoryNav">
         {categoryList.map((category) => {
@@ -23,7 +23,7 @@ const CategoriesNav = ({ setCategoryList, categoryList }) => {
           );
         })}
       </section>
-    </nav>
+    </section>
   );
 };
 

@@ -113,3 +113,13 @@
   background-color: red;
   margin: 3px;
 }
+
+@media screen and (max-width: 500px) {
+  .NavBar {
+    display: block;
+    flex-direction: column;
+  }
+  .CategoryNav {
+    display: block;
+  }
+}

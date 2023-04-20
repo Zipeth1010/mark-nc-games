@@ -4,9 +4,11 @@ const reviewsApi = axios.create({
   baseURL: "https://mark-portfolio-project.onrender.com/api",
 });
 
-export const getReviews = (category) => {
+export const getReviews = (category, sortby, order) => {
   return reviewsApi
-    .get(`/reviews`, { params: { category: category } })
+    .get(`/reviews`, {
+      params: { category: category, sort_by: sortby, order: order },
+    })
     .then(({ data }) => {
       return data.reviews;
     });
@@ -44,12 +46,4 @@ export const getCategories = () => {
   return reviewsApi.get("/categories").then(({ data }) => {
     return data.categories;
   });
-};
-
-export const getReviewsQuery = (sort_by, order) => {
-  return reviewsApi
-    .get(`/reviews?sort_by=${sort_by}&order=${order}`)
-    .then(({ data }) => {
-      return data.reviews;
-    });
 };

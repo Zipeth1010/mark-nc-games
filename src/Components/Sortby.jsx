@@ -1,20 +1,10 @@
-import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
-import { getReviewsQuery } from "../api";
+import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
-const Sortby = ({ reviewList, setReviewList }) => {
+const Sortby = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [orderAscending, setOrderAscending] = useState(true);
-  const sortByQuery = searchParams.get("sort_by");
-  const orderQuery = searchParams.get("order");
 
   const setSortOrder = (direction) => {
-    if (direction === "DESC") {
-      setOrderAscending(false);
-    }
-    if (direction === "ASC") {
-      setOrderAscending(true);
-    }
     const newParams = new URLSearchParams(searchParams);
     newParams.set("order", direction);
     setSearchParams(newParams);
@@ -25,12 +15,6 @@ const Sortby = ({ reviewList, setReviewList }) => {
     newQuery.set("sort_by", query);
     setSearchParams(newQuery);
   };
-
-  useEffect(() => {
-    getReviewsQuery(sortByQuery, orderQuery).then((sortedList) => {
-      setReviewList(sortedList);
-    });
-  }, [sortByQuery, orderQuery]);
 
   return (
     <section className="SortbySection">
@@ -50,15 +34,14 @@ const Sortby = ({ reviewList, setReviewList }) => {
       <button className="ReviewCardButton" onClick={() => setSortby("votes")}>
         Votes
       </button>
-      {orderAscending ? (
-        <button className="ASCbutton" onClick={() => setSortOrder("DESC")}>
-          Ascending
-        </button>
-      ) : (
-        <button className="DESCbutton" onClick={() => setSortOrder("ASC")}>
-          Descending
-        </button>
-      )}
+
+      <button className="ASCbutton" onClick={() => setSortOrder("ASC")}>
+        Ascending
+      </button>
+
+      <button className="DESCbutton" onClick={() => setSortOrder("DESC")}>
+        Descending
+      </button>
     </section>
   );
 };
