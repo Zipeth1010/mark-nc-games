@@ -3,6 +3,7 @@ import { getReviews } from "../api";
 import { Grid } from "@mui/material";
 import ReviewCard from "./ReviewCard";
 import { useSearchParams } from "react-router-dom";
+import Sortby from "./Sortby";
 
 const ReviewsList = () => {
   const [reviewList, setReviewList] = useState([]);
@@ -10,21 +11,27 @@ const ReviewsList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const category = searchParams.get("category");
+  const sortByQuery = searchParams.get("sort_by");
+  const orderQuery = searchParams.get("order");
 
   useEffect(() => {
     setIsLoading(true);
-    console.log(category);
-    getReviews(category).then((reviews) => {
+    getReviews(category, sortByQuery, orderQuery).then((reviews) => {
       setReviewList(reviews);
       setIsLoading(false);
     });
-  }, [category]);
+  }, [category, sortByQuery, orderQuery]);
 
   return isLoading ? (
     <p>Loading Reviews...</p>
   ) : (
-    <section>
+    <section className="ReviewListSection">
       <h2>List of Reviews!</h2>
+      <Sortby
+        reviewList={reviewList}
+        setReviewList={setReviewList}
+        category={category}
+      />
       <Grid
         className="ReviewGrid"
         container
