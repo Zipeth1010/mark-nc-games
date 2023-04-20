@@ -28,7 +28,7 @@ function App() {
         <Route
           path="/reviews"
           element={
-            <div>
+            <div className="HomeDiv">
               <CategoriesNav
                 setCategoryList={setCategoryList}
                 categoryList={categoryList}

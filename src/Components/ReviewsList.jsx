@@ -25,7 +25,7 @@ const ReviewsList = () => {
   return isLoading ? (
     <p>Loading Reviews...</p>
   ) : (
-    <section>
+    <section className="ReviewListSection">
       <h2>List of Reviews!</h2>
       <Sortby
         reviewList={reviewList}

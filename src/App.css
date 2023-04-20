@@ -56,6 +56,7 @@
 
 .FullReviewSection {
   text-align: center;
+  justify-content: center;
 }
 
 .FullReviewCard img {
@@ -87,6 +88,7 @@
   font-size: 14px;
   border-radius: 50%;
   transition-duration: 0.4s;
+  width: fit-content;
 }
 
 .NavButton:hover {
@@ -112,6 +114,15 @@
 .DESCbutton {
   background-color: red;
   margin: 3px;
+}
+
+.NavBar {
+  display: block;
+  flex-direction: column;
+}
+.CategoryNav {
+  display: block;
+  max-width: 90%;
 }
 
 @media screen and (max-width: 500px) {
