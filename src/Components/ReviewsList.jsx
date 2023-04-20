@@ -3,6 +3,7 @@ import { getReviews } from "../api";
 import { Grid } from "@mui/material";
 import ReviewCard from "./ReviewCard";
 import { useSearchParams } from "react-router-dom";
+import Sortby from "./Sortby";
 
 const ReviewsList = () => {
   const [reviewList, setReviewList] = useState([]);
@@ -13,7 +14,6 @@ const ReviewsList = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    console.log(category);
     getReviews(category).then((reviews) => {
       setReviewList(reviews);
       setIsLoading(false);
@@ -25,6 +25,7 @@ const ReviewsList = () => {
   ) : (
     <section>
       <h2>List of Reviews!</h2>
+      <Sortby reviewList={reviewList} setReviewList={setReviewList} />
       <Grid
         className="ReviewGrid"
         container

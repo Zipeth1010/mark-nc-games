@@ -10,6 +10,7 @@ const ReviewCard = (review) => {
       <p>Category: {review.category}</p>
       <p>Votes: {review.votes}</p>
       <p>Comment Count: {review.comment_count}</p>
+      <p>Created at: {review.created_at}</p>
       <Link to={`/reviews/${review.review_id}`}>
         <button type="button" className="ReviewCardButton">
           More Info

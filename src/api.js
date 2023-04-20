@@ -45,3 +45,11 @@ export const getCategories = () => {
     return data.categories;
   });
 };
+
+export const getReviewsQuery = (sort_by, order) => {
+  return reviewsApi
+    .get(`/reviews?sort_by=${sort_by}&order=${order}`)
+    .then(({ data }) => {
+      return data.reviews;
+    });
+};

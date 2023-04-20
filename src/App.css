@@ -95,10 +95,21 @@
 }
 
 .ReviewCardButton {
+  margin: 3px;
   transition-duration: 0.1s;
 }
 
 .ReviewCardButton:hover {
   background-color: black;
   color: white;
+}
+
+.ASCbutton {
+  background-color: #00b847;
+  margin: 3px;
+}
+
+.DESCbutton {
+  background-color: red;
+  margin: 3px;
 }
