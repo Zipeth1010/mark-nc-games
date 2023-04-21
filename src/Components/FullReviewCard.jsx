@@ -4,7 +4,7 @@ import { getReviewById } from "../api";
 import CommentList from "./CommentList";
 import * as api from "../api.js";
 
-const FullReviewCard = () => {
+const FullReviewCard = ({ loggedUser }) => {
   const [displayReview, setDisplayReview] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasClicked, setHasClicked] = useState(false);
@@ -57,7 +57,7 @@ const FullReviewCard = () => {
         ) : null}
       </div>
       <section>
-        <CommentList review_id={review_id} />
+        <CommentList review_id={review_id} loggedUser={loggedUser} />
       </section>
     </section>
   );

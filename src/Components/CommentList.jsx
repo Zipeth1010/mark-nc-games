@@ -5,12 +5,13 @@ import CommentCard from "./CommentCard";
 import { getCommentsById } from "../api";
 import * as api from "../api";
 
-const CommentList = ({ review_id }) => {
+const CommentList = ({ review_id, loggedUser }) => {
   const [commentList, setCommentList] = useState([]);
-  const [commentUsername, setCommentUsername] = useState("jessjelly");
+  const [commentUsername, setCommentUsername] = useState("tickle122");
   const [commentBody, setCommentBody] = useState("");
   const [successfulPost, setSuccessfulPost] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [deleteNotification, setDeleteNotification] = useState(false);
 
   useEffect(() => {
     getCommentsById(review_id).then((comments) => {
@@ -75,6 +76,7 @@ const CommentList = ({ review_id }) => {
           </form>
         </section>
       )}
+      {deleteNotification ? <p>Comment Deleted!</p> : null}
       <Grid
         className="CommentGrid"
         container
@@ -86,7 +88,13 @@ const CommentList = ({ review_id }) => {
         {commentList.map((comment) => {
           return (
             <Grid item xs={12} key={comment.comment_id}>
-              <CommentCard {...comment} />
+              <CommentCard
+                {...comment}
+                loggedUser={loggedUser}
+                setCommentList={setCommentList}
+                review_id={review_id}
+                setDeleteNotification={setDeleteNotification}
+              />
             </Grid>
           );
         })}

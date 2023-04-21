@@ -47,3 +47,13 @@ export const getCategories = () => {
     return data.categories;
   });
 };
+
+export const getUserApi = (username) => {
+  return reviewsApi.get(`/users`).then(({ data }) => {
+    return data.users;
+  });
+};
+
+export const deleteComment = (comment_id) => {
+  return reviewsApi.delete(`/comments/${comment_id}`);
+};
