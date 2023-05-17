@@ -10,7 +10,7 @@ The user can browse the reviews by category and sort them accordingly.\
 If the user would like more information on a review, they have the option to click it.\
 This then opens up the specific review and gives them the option to comment/vote on the review made.\
 Any comments left by the specific user can be deleted if they want the comment redacted.\
-If at any point the user wants to return to the main page, they can just click the header at the top of the page.\
+If at any point the user wants to return to the main page, they can just click the header at the top of the page.
 
 ## Link to Back-End Repo
 
