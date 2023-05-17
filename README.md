@@ -24,12 +24,12 @@ This repo was created using v19.6.0
 
 If you want to run this repository locally, follow these steps:
 
-- type 'git clone https://github.com/Zipeth1010/mark-nc-games.git' into the terminal.\
-- target the repository in the terminal using the cd 'mark-nc-games' command.\
-- type 'npm i' in the terminal to install all the locally used packages.\
-- After the packages are installed, type 'npm start' in the terminal to run the start script.\
-- If the browser didn't popup after the npm start command, type 'http://localhost:3000' into the browser.\
-- Type one of the fixed usernames in the browser popup from the seeded database 'tickle122' for example.\
+- type 'git clone https://github.com/Zipeth1010/mark-nc-games.git' into the terminal.
+- target the repository in the terminal using the cd 'mark-nc-games' command.
+- type 'npm i' in the terminal to install all the locally used packages.
+- After the packages are installed, type 'npm start' in the terminal to run the start script.
+- If the browser didn't popup after the npm start command, type 'http://localhost:3000' into the browser.
+- Type one of the fixed usernames in the browser popup from the seeded database 'tickle122' for example.
 - The app should be up and running now!
 
 ## Enjoy!
