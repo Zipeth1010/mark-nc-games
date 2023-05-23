@@ -4,7 +4,7 @@ This project was created with React.js, and is currently deployed on the web add
 
 ## General Information
 
-The project is essentially acting as a board review website where user's can log in (Only fixed login's work at the minute).\
+The project is essentially acting as a board review website where user's can log in (Only fixed login's work at the minute, use tickle122 as an example to log in).\
 The user can see a list of board games which have reviews.\
 The user can browse the reviews by category and sort them accordingly.\
 If the user would like more information on a review, they have the option to click it.\
