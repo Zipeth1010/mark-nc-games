@@ -12,7 +12,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
-import { getUserApi } from "../api";
+import * as api from "../api";
+import { CollectionsBookmarkOutlined } from "@mui/icons-material";
 
 function Copyright(props) {
   return (
@@ -34,26 +35,31 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn({ setLoggedUser }) {
-  const [userInput, setUserInput] = useState("");
+export default function SignUp({ setLoggedUser }) {
+  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [avatar, setAvatar] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleSubmit = (event) => {
     setIsLoading(true);
     setError(false);
     event.preventDefault();
-    getUserApi()
-      .then((users) => {
-        for (let i = 0; i < users.length; i++) {
-          if (userInput === users[i].username) {
-            setLoggedUser(userInput);
-            setIsLoading(false);
-            if (i === users.length - 1) {
-              throw new Error();
-            }
-          }
-        }
+    const userToPost = {
+      username: username,
+      name: name,
+      avatar_url: avatar,
+    };
+
+    api
+      .postUser(userToPost)
+      .then((postedUser) => {
+        console.log(postedUser);
+        setLoggedUser(postedUser.data.user.username);
+        setIsLoading(false);
+        setSuccess(true);
       })
       .catch((err) => {
         setIsLoading(false);
@@ -79,7 +85,7 @@ export default function SignIn({ setLoggedUser }) {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign Up
           </Typography>
           <Box
             component="form"
@@ -96,9 +102,36 @@ export default function SignIn({ setLoggedUser }) {
               name="Username"
               autoComplete="Username"
               autoFocus
-              value={userInput}
+              value={username}
               onChange={(event) => {
-                setUserInput(event.target.value);
+                setUsername(event.target.value);
+              }}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="Name"
+              label="Name"
+              name="Name"
+              autoComplete="Name"
+              autoFocus
+              value={name}
+              onChange={(event) => {
+                setName(event.target.value);
+              }}
+            />
+            <TextField
+              margin="normal"
+              fullWidth
+              id="Avatar"
+              label="Avatar-URL"
+              name="Avatar"
+              autoComplete="Avatar"
+              autoFocus
+              value={avatar}
+              onChange={(event) => {
+                setAvatar(event.target.value);
               }}
             />
             {error ? (
@@ -106,18 +139,23 @@ export default function SignIn({ setLoggedUser }) {
                 Invalid Username, Please Try Again!
               </p>
             ) : null}
+            {success ? (
+              <Button fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+                <Link href="/reviews">Take me to the reviews!</Link>
+              </Button>
+            ) : null}
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              Sign Up!
             </Button>
             <Grid container>
               <Grid item>
-                <Link href="/sign-up" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                <Link href="/" variant="body2">
+                  {"Already have an account? Log in!"}
                 </Link>
               </Grid>
             </Grid>
