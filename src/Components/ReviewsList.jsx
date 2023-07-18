@@ -26,7 +26,7 @@ const ReviewsList = () => {
     <p>Loading Reviews...</p>
   ) : (
     <section className="ReviewListSection">
-      <h2>List of Reviews!</h2>
+      <h3>List of Reviews!</h3>
       <Sortby
         reviewList={reviewList}
         setReviewList={setReviewList}

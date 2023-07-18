@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 const Header = ({ loggedUser }) => {
   return (
-    <section>
+    <section className="HeaderSection">
       <Link to={`/reviews`}>
-        <h1>NC Game Reviews!</h1>
+        <h1 className="HeaderText">NC Game Reviews!</h1>
       </Link>
-      <h3>Welcome back {loggedUser}!</h3>
+      <h5 className="UserWelcome">Welcome back {loggedUser}!</h5>
     </section>
   );
 };

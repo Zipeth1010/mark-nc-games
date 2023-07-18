@@ -18,7 +18,7 @@ const Sortby = () => {
 
   return (
     <section className="SortbySection">
-      <h3>Sort by:</h3>
+      <h4>Sort by:</h4>
       <button
         className="ReviewCardButton"
         onClick={() => setSortby("created_at")}

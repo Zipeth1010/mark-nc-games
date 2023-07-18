@@ -9,7 +9,7 @@ import SignIn from "./Components/Signin";
 
 function App() {
   const [categoryList, setCategoryList] = useState([]);
-  const [loggedUser, setLoggedUser] = useState(null);
+  const [loggedUser, setLoggedUser] = useState("tickle122");
 
   return (
     <div className="App">
