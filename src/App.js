@@ -62,7 +62,19 @@ function App() {
         ></Route>
         <Route
           path="/sign-up"
-          element={<SignUp setLoggedUser={setLoggedUser} />}
+          element={
+            !loggedUser ? (
+              <SignUp setLoggedUser={setLoggedUser} />
+            ) : (
+              <div>
+                <CategoriesNav
+                  setCategoryList={setCategoryList}
+                  categoryList={categoryList}
+                />
+                <ReviewsList />
+              </div>
+            )
+          }
         ></Route>
       </Routes>
     </div>

@@ -13,7 +13,6 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import * as api from "../api";
-import { CollectionsBookmarkOutlined } from "@mui/icons-material";
 
 function Copyright(props) {
   return (
@@ -56,7 +55,6 @@ export default function SignUp({ setLoggedUser }) {
     api
       .postUser(userToPost)
       .then((postedUser) => {
-        console.log(postedUser);
         setLoggedUser(postedUser.data.user.username);
         setIsLoading(false);
         setSuccess(true);
@@ -135,12 +133,10 @@ export default function SignUp({ setLoggedUser }) {
               }}
             />
             {error ? (
-              <p className="errorMessage">
-                Invalid Username, Please Try Again!
-              </p>
+              <p className="errorMessage">Invalid Username, Please Try Again</p>
             ) : null}
             {success ? (
-              <Button fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+              <Button fullWidth sx={{ mt: 3, mb: 2 }}>
                 <Link href="/reviews">Take me to the reviews!</Link>
               </Button>
             ) : null}
