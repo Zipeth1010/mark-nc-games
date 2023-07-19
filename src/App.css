@@ -102,15 +102,19 @@ select {
   width: 100%;
   min-width: 15ch;
   max-width: 30ch;
-  border: 1px solid var(--select-border);
+  border: 1px solid black;
   border-radius: 0.25em;
   padding: 0.25em 0.5em;
-  font-size: 1.25rem;
+  font-size: 1rem;
   cursor: pointer;
   line-height: 1.1;
   background-color: rgba(199, 199, 199, 0.974);
-  background-image: linear-gradient(to top, #f9f9f9, #fff 30%);
-  margin: 5px;
+  background-image: linear-gradient(to top, #dfdfdf, rgb(255, 255, 255) 50%);
+  margin: 3px;
+}
+
+input {
+  margin: 3px;
 }
 
 @media screen and (max-width: 500px) {
