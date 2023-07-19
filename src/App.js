@@ -10,7 +10,7 @@ import SignUp from "./Components/Signup";
 
 function App() {
   const [categoryList, setCategoryList] = useState([]);
-  const [loggedUser, setLoggedUser] = useState("");
+  const [loggedUser, setLoggedUser] = useState("tickle122");
 
   return (
     <div className="App">
@@ -43,7 +43,7 @@ function App() {
                   setCategoryList={setCategoryList}
                   categoryList={categoryList}
                 />
-                <ReviewsList />
+                <ReviewsList loggedUser={loggedUser} />
               </div>
             )
           }

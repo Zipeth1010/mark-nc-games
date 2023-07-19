@@ -61,3 +61,7 @@ export const deleteComment = (comment_id) => {
 export const postUser = (user) => {
   return reviewsApi.post(`/users`, user);
 };
+
+export const postReview = (review) => {
+  return reviewsApi.post(`/reviews`, review);
+};
