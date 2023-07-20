@@ -13,6 +13,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import { getUserApi } from "../api";
+import { SignalWifiStatusbarConnectedNoInternet4TwoTone } from "@mui/icons-material";
 
 function Copyright(props) {
   return (
@@ -45,15 +46,13 @@ export default function SignIn({ setLoggedUser }) {
     event.preventDefault();
     getUserApi()
       .then((users) => {
-        for (let i = 0; i < users.length; i++) {
-          if (userInput === users[i].username) {
+        for (let user of users) {
+          if (user.username === userInput) {
             setLoggedUser(userInput);
-            setIsLoading(false);
-            if (i === users.length - 1) {
-              throw new Error();
-            }
           }
         }
+        setError(true);
+        setIsLoading(false);
       })
       .catch((err) => {
         setIsLoading(false);
