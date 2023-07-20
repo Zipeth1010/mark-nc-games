@@ -25,8 +25,6 @@ const ReviewsList = ({ loggedUser }) => {
   const [designer, setDesigner] = useState("");
   const [reviewImage, setReviewImage] = useState("");
 
-  console.log(chosenCategory);
-
   //list display criterea
   const category = searchParams.get("category");
   const sortByQuery = searchParams.get("sort_by");
@@ -189,7 +187,7 @@ const ReviewsList = ({ loggedUser }) => {
         {reviewList.map((review) => {
           return (
             <Grid item xs={12} key={review.review_id}>
-              <ReviewCard {...review} />
+              <ReviewCard {...review} loggedUser={loggedUser} />
             </Grid>
           );
         })}

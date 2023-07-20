@@ -65,3 +65,7 @@ export const postUser = (user) => {
 export const postReview = (review) => {
   return reviewsApi.post(`/reviews`, review);
 };
+
+export const deleteReview = (review_id) => {
+  return reviewsApi.delete(`/reviews/${review_id}`);
+};
