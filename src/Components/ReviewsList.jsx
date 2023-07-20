@@ -82,80 +82,82 @@ const ReviewsList = ({ loggedUser }) => {
       <h3>List of Reviews!</h3>
 
       {showForm ? (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="title">Review title: </label>
-          <input
-            id="title"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
-            required
-          ></input>
-          <br />
-          <label htmlFor="selectCategory">Game category: </label>
-          <select
-            className="Categoryselect"
-            onChange={(e) => {
-              if (e.target.value === "Select your category") {
-                setChosenCategory(e.target.value);
-              } else {
-                const cat = selectCategory?.find(
-                  (x) => x.slug === e.target.value
+        <section className="FormSection">
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="title">Review title: </label>
+            <input
+              id="title"
+              placeholder="Title"
+              value={title}
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
+              required
+            ></input>
+            <br />
+            <label htmlFor="selectCategory">Game category: </label>
+            <select
+              className="Categoryselect"
+              onChange={(e) => {
+                if (e.target.value === "Select your category") {
+                  setChosenCategory(e.target.value);
+                } else {
+                  const cat = selectCategory?.find(
+                    (x) => x.slug === e.target.value
+                  );
+                  setChosenCategory(cat.slug);
+                }
+              }}
+              required
+            >
+              <option>Select your category</option>
+              {selectCategory.map((category) => {
+                return (
+                  <option value={category.slug} key={category.slug}>
+                    {category.slug}
+                  </option>
                 );
-                setChosenCategory(cat.slug);
-              }
-            }}
-            required
-          >
-            <option>Select your category</option>
-            {selectCategory.map((category) => {
-              return (
-                <option value={category.slug} key={category.slug}>
-                  {category.slug}
-                </option>
-              );
-            })}
-          </select>
-          <br />
-          <label htmlFor="designer">Designer: </label>
-          <input
-            id="designer"
-            placeholder="Designer"
-            value={designer}
-            onChange={(e) => {
-              setDesigner(e.target.value);
-            }}
-            required
-          ></input>
-          <br />
-          <label htmlFor="reviewimg">Game image: </label>
-          <input
-            id="reviewimg"
-            placeholder="Image of the Game"
-            value={reviewImage}
-            onChange={(e) => {
-              setReviewImage(e.target.value);
-            }}
-            required
-          ></input>
-          <br />
-          <label htmlFor="reviewbody">Review: </label>
-          <textarea
-            id="reviewbody"
-            placeholder="Review Text"
-            value={reviewBody}
-            onChange={(e) => {
-              setReviewBody(e.target.value);
-            }}
-            required
-          ></textarea>
-          <br />
-          <button type="submit" onClick={handleSubmit} disabled={isLoading}>
-            Submit review!
-          </button>
-        </form>
+              })}
+            </select>
+            <br />
+            <label htmlFor="designer">Designer: </label>
+            <input
+              id="designer"
+              placeholder="Designer"
+              value={designer}
+              onChange={(e) => {
+                setDesigner(e.target.value);
+              }}
+              required
+            ></input>
+            <br />
+            <label htmlFor="reviewimg">Game image: </label>
+            <input
+              id="reviewimg"
+              placeholder="Image of the Game"
+              value={reviewImage}
+              onChange={(e) => {
+                setReviewImage(e.target.value);
+              }}
+              required
+            ></input>
+            <br />
+            <label htmlFor="reviewbody">Review: </label>
+            <textarea
+              id="reviewbody"
+              placeholder="Review Text"
+              value={reviewBody}
+              onChange={(e) => {
+                setReviewBody(e.target.value);
+              }}
+              required
+            ></textarea>
+            <br />
+            <button type="submit" onClick={handleSubmit} disabled={isLoading}>
+              Submit review!
+            </button>
+          </form>
+        </section>
       ) : (
         <button
           onClick={(e) => {
