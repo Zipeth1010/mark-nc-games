@@ -7,11 +7,11 @@ import * as api from "../api";
 
 const CommentList = ({ review_id, loggedUser }) => {
   const [commentList, setCommentList] = useState([]);
-  const [commentUsername, setCommentUsername] = useState("tickle122");
   const [commentBody, setCommentBody] = useState("");
   const [successfulPost, setSuccessfulPost] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [deleteNotification, setDeleteNotification] = useState(false);
+  console.log(loggedUser);
 
   useEffect(() => {
     getCommentsById(review_id).then((comments) => {
@@ -22,7 +22,7 @@ const CommentList = ({ review_id, loggedUser }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const commentToSubmit = {
-      username: commentUsername,
+      username: loggedUser,
       body: commentBody,
     };
     setIsLoading(true);
@@ -48,17 +48,6 @@ const CommentList = ({ review_id, loggedUser }) => {
           <h4>Post your own comment:</h4>
           <section className="FormSection">
             <form onSubmit={handleSubmit}>
-              <label htmlFor="username">State your username:</label>
-              <br></br>
-              <input
-                id="username"
-                value={commentUsername}
-                onChange={(event) => {
-                  setCommentUsername(event.target.value);
-                }}
-                required
-              />
-              <br></br>
               <label htmlFor="body">Comment:</label>
               <br></br>
               <textarea
