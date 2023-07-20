@@ -46,34 +46,36 @@ const CommentList = ({ review_id, loggedUser }) => {
       ) : (
         <section type="CommentForm">
           <h4>Post your own comment:</h4>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="username">State your username:</label>
-            <br></br>
-            <input
-              id="username"
-              value={commentUsername}
-              onChange={(event) => {
-                setCommentUsername(event.target.value);
-              }}
-              required
-            />
-            <br></br>
-            <label htmlFor="body">Comment:</label>
-            <br></br>
-            <textarea
-              id="body"
-              value={commentBody}
-              cols="28"
-              onChange={(event) => {
-                setCommentBody(event.target.value);
-              }}
-              required
-            />
-            <br></br>
-            <button type="submit" disabled={isLoading}>
-              Submit!
-            </button>
-          </form>
+          <section className="FormSection">
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="username">State your username:</label>
+              <br></br>
+              <input
+                id="username"
+                value={commentUsername}
+                onChange={(event) => {
+                  setCommentUsername(event.target.value);
+                }}
+                required
+              />
+              <br></br>
+              <label htmlFor="body">Comment:</label>
+              <br></br>
+              <textarea
+                id="body"
+                value={commentBody}
+                cols="28"
+                onChange={(event) => {
+                  setCommentBody(event.target.value);
+                }}
+                required
+              />
+              <br></br>
+              <button type="submit" disabled={isLoading}>
+                Submit!
+              </button>
+            </form>
+          </section>
         </section>
       )}
       {deleteNotification ? <p>Comment Deleted!</p> : null}
