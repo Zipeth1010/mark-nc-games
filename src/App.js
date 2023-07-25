@@ -4,7 +4,7 @@ import Header from "./Components/Header";
 import CategoriesNav from "./Components/CategoriesNav";
 import ReviewsList from "./Components/ReviewsList";
 import FullReviewCard from "./Components/FullReviewCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SignIn from "./Components/Signin";
 import SignUp from "./Components/Signup";
 import HomeButton from "./Components/HomeButton";
@@ -13,9 +13,20 @@ function App() {
   const [categoryList, setCategoryList] = useState([]);
   const [loggedUser, setLoggedUser] = useState("");
 
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      console.log(loggedInUser);
+      const foundUser = loggedInUser;
+      setLoggedUser(foundUser);
+    }
+  }, []);
+
   return (
     <div className="App">
-      {!loggedUser ? null : <Header loggedUser={loggedUser} />}
+      {!loggedUser ? null : (
+        <Header loggedUser={loggedUser} setLoggedUser={setLoggedUser} />
+      )}
       <Routes>
         <Route
           path="/"
@@ -29,7 +40,7 @@ function App() {
                   categoryList={categoryList}
                 />
                 <ReviewsList />
-                {/* <HomeButton /> */}
+                <HomeButton />
               </div>
             )
           }
@@ -46,7 +57,7 @@ function App() {
                   categoryList={categoryList}
                 />
                 <ReviewsList loggedUser={loggedUser} />
-                {/* <HomeButton /> */}
+                <HomeButton />
               </div>
             )
           }
@@ -59,7 +70,7 @@ function App() {
             ) : (
               <div className="FullReviewDiv">
                 <FullReviewCard loggedUser={loggedUser} />
-                {/* <HomeButton /> */}
+                <HomeButton />
               </div>
             )
           }
@@ -76,6 +87,7 @@ function App() {
                   categoryList={categoryList}
                 />
                 <ReviewsList />
+                <HomeButton />
               </div>
             )
           }

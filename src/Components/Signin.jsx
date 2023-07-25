@@ -13,7 +13,6 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import { getUserApi } from "../api";
-import { SignalWifiStatusbarConnectedNoInternet4TwoTone } from "@mui/icons-material";
 
 function Copyright(props) {
   return (
@@ -49,6 +48,7 @@ export default function SignIn({ setLoggedUser }) {
         for (let user of users) {
           if (user.username === userInput) {
             setLoggedUser(userInput);
+            localStorage.setItem("user", userInput);
           }
         }
         setError(true);
