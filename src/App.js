@@ -7,10 +7,11 @@ import FullReviewCard from "./Components/FullReviewCard";
 import { useState } from "react";
 import SignIn from "./Components/Signin";
 import SignUp from "./Components/Signup";
+import HomeButton from "./Components/HomeButton";
 
 function App() {
   const [categoryList, setCategoryList] = useState([]);
-  const [loggedUser, setLoggedUser] = useState("");
+  const [loggedUser, setLoggedUser] = useState("tickle122");
 
   return (
     <div className="App">
@@ -28,6 +29,7 @@ function App() {
                   categoryList={categoryList}
                 />
                 <ReviewsList />
+                <HomeButton />
               </div>
             )
           }
@@ -44,6 +46,7 @@ function App() {
                   categoryList={categoryList}
                 />
                 <ReviewsList loggedUser={loggedUser} />
+                <HomeButton />
               </div>
             )
           }
@@ -56,6 +59,7 @@ function App() {
             ) : (
               <div className="FullReviewDiv">
                 <FullReviewCard loggedUser={loggedUser} />
+                <HomeButton />
               </div>
             )
           }

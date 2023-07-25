@@ -11,7 +11,6 @@ const CommentList = ({ review_id, loggedUser }) => {
   const [successfulPost, setSuccessfulPost] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [deleteNotification, setDeleteNotification] = useState(false);
-  console.log(loggedUser);
 
   useEffect(() => {
     getCommentsById(review_id).then((comments) => {
