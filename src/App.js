@@ -29,7 +29,7 @@ function App() {
                   categoryList={categoryList}
                 />
                 <ReviewsList />
-                <HomeButton />
+                {/* <HomeButton /> */}
               </div>
             )
           }
@@ -46,7 +46,7 @@ function App() {
                   categoryList={categoryList}
                 />
                 <ReviewsList loggedUser={loggedUser} />
-                <HomeButton />
+                {/* <HomeButton /> */}
               </div>
             )
           }
@@ -59,7 +59,7 @@ function App() {
             ) : (
               <div className="FullReviewDiv">
                 <FullReviewCard loggedUser={loggedUser} />
-                <HomeButton />
+                {/* <HomeButton /> */}
               </div>
             )
           }
