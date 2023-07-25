@@ -51,6 +51,11 @@
   margin-top: 2px;
 }
 
+.FullReviewCard {
+  display: inline-block;
+  align-self: center;
+}
+
 .FullReviewDiv {
   text-align: center;
   align-items: center;
@@ -64,16 +69,23 @@
 
 .FullReviewCard img {
   align-self: center;
-  max-width: 200px;
+  max-width: 50%;
 }
 
 .FullReviewCard {
+  width: 75%;
   margin: 0px;
   text-align: center;
   align-items: center;
   border: 3px solid black;
   border-radius: 25px;
-  margin: 50px;
+  margin: 25px;
+}
+
+.FullReviewSection {
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .CommentGrid {
@@ -117,7 +129,6 @@ input {
 
 .InnerHeaderSection {
   width: 80%;
-  min-width: 150px;
   height: 100px;
   display: block;
   margin: 0 auto;
@@ -197,4 +208,11 @@ textarea {
   .CategoryNav {
     display: block;
   }
+}
+
+.FixedButton {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  padding: 20px;
 }
