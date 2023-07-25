@@ -12,6 +12,7 @@ import HomeButton from "./Components/HomeButton";
 function App() {
   const [categoryList, setCategoryList] = useState([]);
   const [loggedUser, setLoggedUser] = useState("");
+  console.log(loggedUser);
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
