@@ -11,7 +11,7 @@ import HomeButton from "./Components/HomeButton";
 
 function App() {
   const [categoryList, setCategoryList] = useState([]);
-  const [loggedUser, setLoggedUser] = useState("tickle122");
+  const [loggedUser, setLoggedUser] = useState("");
 
   return (
     <div className="App">
