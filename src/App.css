@@ -41,6 +41,7 @@
 
 .MuiContainer-maxWidthXs {
   font-size: small;
+  min-width: 250px;
   padding-top: 3px;
   padding-bottom: 3px;
   margin: 0px;

@@ -181,14 +181,15 @@ const ReviewsList = ({ loggedUser }) => {
       <Grid
         className="ReviewGrid"
         container
-        columns={3}
+        justifyContent="center"
         direction="row"
         alignContent="center"
         columnSpacing={[1]}
+        zeroMinWidth
       >
         {reviewList.map((review) => {
           return (
-            <Grid item xs={12} key={review.review_id}>
+            <Grid item xs={12} md={6} lg={4} key={review.review_id}>
               <ReviewCard {...review} loggedUser={loggedUser} />
             </Grid>
           );
