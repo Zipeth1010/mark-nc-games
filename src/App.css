@@ -162,6 +162,11 @@ button {
   margin: 2px;
 }
 
+.button img {
+  width: 45px;
+  height: 25px;
+}
+
 button:hover {
   background-color: #555555;
   color: white;

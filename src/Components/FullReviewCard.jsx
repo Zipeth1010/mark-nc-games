@@ -49,8 +49,8 @@ const FullReviewCard = ({ loggedUser }) => {
         <p>{displayReview.review_body}</p>
         <p>Likes: {reviewVotes}</p>
         <p>Comments: {displayReview.comment_count}</p>
-        <button onClick={addVote} disabled={hasClicked}>
-          Like!
+        <button onClick={addVote} disabled={hasClicked} className="button">
+          <img src={require("../Assets/upvote.png")} />
         </button>
         {error ? (
           <p className="error">There was an error. Try again another time!</p>
