@@ -17,31 +17,33 @@ const Sortby = () => {
   };
 
   return (
-    <section className="SortbySection">
-      <h4>Sort by:</h4>
-      <button
-        className="ReviewCardButton"
-        onClick={() => setSortby("created_at")}
-      >
-        Date
-      </button>
-      <button
-        className="ReviewCardButton"
-        onClick={() => setSortby("comment_count")}
-      >
-        Comment Count
-      </button>
-      <button className="ReviewCardButton" onClick={() => setSortby("votes")}>
-        Votes
-      </button>
+    <section className=" fixed pt-32 pl-5 text-center">
+      <h4 className=" text-2xl font-bold">Sort by:</h4>
+      <section className=" grid grid-cols-1">
+        <button
+          className="ReviewCardButton"
+          onClick={() => setSortby("created_at")}
+        >
+          Date
+        </button>
+        <button
+          className="ReviewCardButton"
+          onClick={() => setSortby("comment_count")}
+        >
+          Comment Count
+        </button>
+        <button className="ReviewCardButton" onClick={() => setSortby("votes")}>
+          Votes
+        </button>
 
-      <button className="ASCbutton" onClick={() => setSortOrder("ASC")}>
-        Ascending
-      </button>
+        <button className=" pt-10" onClick={() => setSortOrder("ASC")}>
+          Ascending
+        </button>
 
-      <button className="DESCbutton" onClick={() => setSortOrder("DESC")}>
-        Descending
-      </button>
+        <button className="DESCbutton" onClick={() => setSortOrder("DESC")}>
+          Descending
+        </button>
+      </section>
     </section>
   );
 };

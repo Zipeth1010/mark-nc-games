@@ -8,12 +8,12 @@ const Header = ({ loggedUser, setLoggedUser }) => {
   };
 
   return (
-    <section className="HeaderSection">
-      <div className="InnerHeaderSection">
-        <div className="header_container">
-          <Link to={`/reviews`}>
-            <h1 className="HeaderText">Mark's Game Reviews!</h1>
-          </Link>
+    <section className=" fixed top-0 w-screen bg-orange">
+      <div className=" flex">
+        <Link to={`/reviews`}>
+          <img src={require("../Assets/Boardit.png")} className=" h-24 pt-3" />
+        </Link>
+        <div className="fixed right-0 flex-row space-x-8 pr-8 pt-5 text-white">
           <h5 className="UserWelcome">Welcome back {loggedUser}!</h5>
           <a href="/">
             <button onClick={logout}>Log out!</button>

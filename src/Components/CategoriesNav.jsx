@@ -12,8 +12,9 @@ const CategoriesNav = ({ setCategoryList, categoryList }) => {
   }, [setCategoryList]);
 
   return (
-    <section className="NavBar">
-      <h3>Category List!</h3>
+    <section className=" fixed flex-col pt-36 text-white pl-5">
+      <h2 className=" text-3xl font-bold">Filter/Sort Reviews</h2>
+      <h3 className=" text-2xl">Category List!</h3>
       <select
         onChange={(e) => {
           if (e.target.value === "All categories") {
@@ -35,7 +36,7 @@ const CategoriesNav = ({ setCategoryList, categoryList }) => {
           );
         })}
       </select>
-      <button>
+      <button className=" pl-5">
         <Link to={`/reviews?category=${searchCategory}`}>Search!</Link>
       </button>
     </section>

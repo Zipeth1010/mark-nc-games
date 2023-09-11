@@ -78,11 +78,10 @@ const ReviewsList = ({ loggedUser }) => {
   return isLoading ? (
     <p>Loading Reviews...</p>
   ) : (
-    <section className="ReviewListSection">
-      <h3>List of Reviews!</h3>
-
+    <section className=" pt-32 text-white">
       {showForm ? (
-        <section className="FormSection">
+        <section className=" flex-col pl-96 text-center">
+          <h3>List of Reviews!</h3>
           <form onSubmit={handleSubmit}>
             <label htmlFor="title">Review title: </label>
             <input
@@ -159,42 +158,54 @@ const ReviewsList = ({ loggedUser }) => {
           </form>
         </section>
       ) : (
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            setShowform(true);
-          }}
-          disabled={isSuccess}
-        >
-          Post a Review!
-        </button>
+        <section className=" pl-96 text-center">
+          <h3>List of Reviews!</h3>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setShowform(true);
+            }}
+            disabled={isSuccess}
+          >
+            Post a Review!
+          </button>
+        </section>
       )}
       {isError ? (
         <p>There was an error with your submission, please try again!</p>
       ) : null}
       {isSuccess ? <h5>Thanks a lot for your review!</h5> : null}
+
       <Sortby
         reviewList={reviewList}
         setReviewList={setReviewList}
         category={category}
       />
-      <Grid
-        className="ReviewGrid"
-        container
-        justifyContent="center"
-        direction="row"
-        alignContent="center"
-        columnSpacing={[1]}
-        zeroMinWidth
-      >
-        {reviewList.map((review) => {
-          return (
-            <Grid item xs={12} md={6} lg={4} key={review.review_id}>
-              <ReviewCard {...review} loggedUser={loggedUser} />
-            </Grid>
-          );
-        })}
-      </Grid>
+      <div className=" pl-80 ">
+        <Grid
+          container
+          justifyContent="center"
+          direction="row"
+          alignContent="center"
+          columnSpacing={[1]}
+          zeroMinWidth
+        >
+          {reviewList.map((review) => {
+            return (
+              <Grid
+                item
+                xs={12}
+                md={6}
+                lg={4}
+                key={review.review_id}
+                className=" pt-5"
+              >
+                <ReviewCard {...review} loggedUser={loggedUser} />
+              </Grid>
+            );
+          })}
+        </Grid>
+      </div>
     </section>
   );
 };
