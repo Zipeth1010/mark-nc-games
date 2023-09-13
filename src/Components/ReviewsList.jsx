@@ -6,8 +6,10 @@ import { useSearchParams } from "react-router-dom";
 import Sortby from "./Sortby";
 import { getCategories } from "../api";
 import * as api from "../api";
+import CategoriesNav from "./CategoriesNav";
+import Loading from "./Loading";
 
-const ReviewsList = ({ loggedUser }) => {
+const ReviewsList = ({ loggedUser, categoryList, setCategoryList }) => {
   const [reviewList, setReviewList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -76,14 +78,16 @@ const ReviewsList = ({ loggedUser }) => {
   };
 
   return isLoading ? (
-    <p>Loading Reviews...</p>
+    <Loading />
   ) : (
-    <section className=" pt-32 text-white">
+    <section className=" pt-32 justify-center items-center">
       {showForm ? (
-        <section className=" flex-col pl-96 text-center">
-          <h3>List of Reviews!</h3>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="title">Review title: </label>
+        <section className=" flex-col pl-80 text-center text-orange">
+          <h3 className=" text-2xl font-bold text-white">List of Reviews!</h3>
+          <form onSubmit={handleSubmit} className=" text-black">
+            <label htmlFor="title" className=" text-white">
+              Game Title:{" "}
+            </label>
             <input
               id="title"
               placeholder="Title"
@@ -94,7 +98,9 @@ const ReviewsList = ({ loggedUser }) => {
               required
             ></input>
             <br />
-            <label htmlFor="selectCategory">Game category: </label>
+            <label htmlFor="selectCategory" className=" text-white">
+              Game Category:{" "}
+            </label>
             <select
               className="Categoryselect"
               onChange={(e) => {
@@ -109,7 +115,7 @@ const ReviewsList = ({ loggedUser }) => {
               }}
               required
             >
-              <option>Select your category</option>
+              <option>Select your Category</option>
               {selectCategory.map((category) => {
                 return (
                   <option value={category.slug} key={category.slug}>
@@ -119,7 +125,9 @@ const ReviewsList = ({ loggedUser }) => {
               })}
             </select>
             <br />
-            <label htmlFor="designer">Designer: </label>
+            <label htmlFor="designer" className=" text-white">
+              Designer:{" "}
+            </label>
             <input
               id="designer"
               placeholder="Designer"
@@ -130,7 +138,9 @@ const ReviewsList = ({ loggedUser }) => {
               required
             ></input>
             <br />
-            <label htmlFor="reviewimg">Game image: </label>
+            <label htmlFor="reviewimg" className=" text-white">
+              Game Image:{" "}
+            </label>
             <input
               id="reviewimg"
               placeholder="Image of the Game"
@@ -141,7 +151,9 @@ const ReviewsList = ({ loggedUser }) => {
               required
             ></input>
             <br />
-            <label htmlFor="reviewbody">Review: </label>
+            <label htmlFor="reviewbody" className=" text-white">
+              Review:{" "}
+            </label>
             <textarea
               id="reviewbody"
               placeholder="Review Text"
@@ -152,15 +164,21 @@ const ReviewsList = ({ loggedUser }) => {
               required
             ></textarea>
             <br />
-            <button type="submit" onClick={handleSubmit} disabled={isLoading}>
+            <button
+              className=" text-white"
+              type="submit"
+              onClick={handleSubmit}
+              disabled={isLoading}
+            >
               Submit review!
             </button>
           </form>
         </section>
       ) : (
         <section className=" pl-96 text-center">
-          <h3>List of Reviews!</h3>
+          <h3 className=" text-white text-2xl font-bold">List of Reviews!</h3>
           <button
+            className=" text-white text-xl"
             onClick={(e) => {
               e.preventDefault();
               setShowform(true);
@@ -174,14 +192,21 @@ const ReviewsList = ({ loggedUser }) => {
       {isError ? (
         <p>There was an error with your submission, please try again!</p>
       ) : null}
-      {isSuccess ? <h5>Thanks a lot for your review!</h5> : null}
-
+      {isSuccess ? (
+        <h5 className=" text-center justify-center pl-96 text-white">
+          Thanks a lot for your review!
+        </h5>
+      ) : null}
+      <CategoriesNav
+        categoryList={categoryList}
+        setCategoryList={setCategoryList}
+      />
       <Sortby
         reviewList={reviewList}
         setReviewList={setReviewList}
         category={category}
       />
-      <div className=" pl-80 ">
+      <div className=" pl-80 justify-center items-center text-center">
         <Grid
           container
           justifyContent="center"

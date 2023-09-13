@@ -12,12 +12,10 @@ import HomeButton from "./Components/HomeButton";
 function App() {
   const [categoryList, setCategoryList] = useState([]);
   const [loggedUser, setLoggedUser] = useState("");
-  console.log(loggedUser);
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
-      console.log(loggedInUser);
       const foundUser = loggedInUser;
       setLoggedUser(foundUser);
     }
@@ -36,11 +34,11 @@ function App() {
               <SignIn setLoggedUser={setLoggedUser} />
             ) : (
               <div>
-                <CategoriesNav
+                <ReviewsList
+                  loggedUser={loggedUser}
                   setCategoryList={setCategoryList}
                   categoryList={categoryList}
                 />
-                <ReviewsList />
                 <HomeButton />
               </div>
             )
@@ -53,11 +51,11 @@ function App() {
               <SignIn setLoggedUser={setLoggedUser} />
             ) : (
               <div className="HomeDiv">
-                <CategoriesNav
+                <ReviewsList
+                  loggedUser={loggedUser}
                   setCategoryList={setCategoryList}
                   categoryList={categoryList}
                 />
-                <ReviewsList loggedUser={loggedUser} />
                 <HomeButton />
               </div>
             )

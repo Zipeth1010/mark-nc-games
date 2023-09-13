@@ -17,28 +17,38 @@ const Sortby = () => {
   };
 
   return (
-    <section className=" fixed pt-32 pl-5 text-center">
+    <section className=" fixed pt-32 pl-8 text-white">
       <h4 className=" text-2xl font-bold">Sort by:</h4>
-      <section className=" grid grid-cols-1">
-        <button
-          className="ReviewCardButton"
-          onClick={() => setSortby("created_at")}
-        >
-          Date
-        </button>
-        <button
-          className="ReviewCardButton"
-          onClick={() => setSortby("comment_count")}
-        >
-          Comment Count
-        </button>
-        <button className="ReviewCardButton" onClick={() => setSortby("votes")}>
-          Votes
-        </button>
-
-        <button className=" pt-10" onClick={() => setSortOrder("ASC")}>
-          Ascending
-        </button>
+      <section className=" grid-cols-1 text-left">
+        <div>
+          <button
+            className="ReviewCardButton"
+            onClick={() => setSortby("created_at")}
+          >
+            Date
+          </button>
+        </div>
+        <div>
+          <button
+            className="ReviewCardButton"
+            onClick={() => setSortby("comment_count")}
+          >
+            Comment Count
+          </button>
+        </div>
+        <div>
+          <button
+            className="ReviewCardButton"
+            onClick={() => setSortby("votes")}
+          >
+            Votes
+          </button>
+        </div>
+        <div>
+          <button className=" pt-10" onClick={() => setSortOrder("ASC")}>
+            Ascending
+          </button>
+        </div>
 
         <button className="DESCbutton" onClick={() => setSortOrder("DESC")}>
           Descending

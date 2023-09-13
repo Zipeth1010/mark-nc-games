@@ -11,7 +11,10 @@ const Header = ({ loggedUser, setLoggedUser }) => {
     <section className=" fixed top-0 w-screen bg-orange">
       <div className=" flex">
         <Link to={`/reviews`}>
-          <img src={require("../Assets/Boardit.png")} className=" h-24 pt-3" />
+          <img
+            src={require("../Assets/Boardit.png")}
+            className=" h-24 pt-3 z-40"
+          />
         </Link>
         <div className="fixed right-0 flex-row space-x-8 pr-8 pt-5 text-white">
           <h5 className="UserWelcome">Welcome back {loggedUser}!</h5>
@@ -20,6 +23,9 @@ const Header = ({ loggedUser, setLoggedUser }) => {
           </a>
         </div>
       </div>
+      <section className="fixed top-26 w-screen bg-white">
+        <br></br>
+      </section>
     </section>
   );
 };
