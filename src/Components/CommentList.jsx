@@ -38,14 +38,14 @@ const CommentList = ({ review_id, loggedUser }) => {
   };
 
   return (
-    <section>
-      <h3>Comments:</h3>
+    <section className=" flex flex-col justify-center items-center text-center text-white">
+      <h3 className=" text-2xl font-bold underline py-4">Comments:</h3>
       {successfulPost ? (
         <p>Thank you for commenting!</p>
       ) : (
         <section type="CommentForm">
-          <h4>Post your own comment:</h4>
-          <section className="FormSection">
+          <h4 className=" text-xl py-2">Post your own comment:</h4>
+          <section>
             <form onSubmit={handleSubmit}>
               <label htmlFor="body">Comment:</label>
               <br></br>
@@ -53,6 +53,7 @@ const CommentList = ({ review_id, loggedUser }) => {
                 id="body"
                 value={commentBody}
                 cols="28"
+                className=" text-orange font-bold"
                 onChange={(event) => {
                   setCommentBody(event.target.value);
                 }}
