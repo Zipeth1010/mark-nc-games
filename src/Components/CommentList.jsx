@@ -60,7 +60,11 @@ const CommentList = ({ review_id, loggedUser }) => {
                 required
               />
               <br></br>
-              <button type="submit" disabled={isLoading}>
+              <button
+                type="submit"
+                disabled={isLoading}
+                className=" bg-white text-orange hover:bg-orange hover:text-white py-2 px-4 rounded"
+              >
                 Submit!
               </button>
             </form>

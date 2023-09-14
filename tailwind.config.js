@@ -6,8 +6,14 @@ module.exports = {
       orange: "#F66403",
       white: "#ffffff",
       black: "#000000",
+      green: "#008000",
+      red: "#ff0000",
     },
-    extend: {},
+    extend: {
+      aspectRatio: {
+        "4/3": "4/3",
+      },
+    },
   },
   plugins: [],
 };

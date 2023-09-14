@@ -17,12 +17,12 @@ const Sortby = () => {
   };
 
   return (
-    <section className=" fixed pt-32 pl-8 text-white">
-      <h4 className=" text-2xl font-bold">Sort by:</h4>
-      <section className=" grid-cols-1 text-left">
+    <section className=" flex md:fixed md:pt-48 md:pl-5 text-white justify-center items-center text-center">
+      <section className=" flex-col md:pl-16 items-center justify-center">
+        <h4 className=" text-2xl font-bold py-3"> Sort by:</h4>
         <div>
           <button
-            className="ReviewCardButton"
+            className=" bg-white text-orange hover:bg-orange hover:text-white my-1 px-4 rounded"
             onClick={() => setSortby("created_at")}
           >
             Date
@@ -30,7 +30,7 @@ const Sortby = () => {
         </div>
         <div>
           <button
-            className="ReviewCardButton"
+            className=" bg-white text-orange hover:bg-orange hover:text-white my-1 px-4 rounded"
             onClick={() => setSortby("comment_count")}
           >
             Comment Count
@@ -38,19 +38,25 @@ const Sortby = () => {
         </div>
         <div>
           <button
-            className="ReviewCardButton"
+            className=" bg-white text-orange hover:bg-orange hover:text-white my-1 px-4 rounded"
             onClick={() => setSortby("votes")}
           >
             Votes
           </button>
         </div>
         <div>
-          <button className=" pt-10" onClick={() => setSortOrder("ASC")}>
+          <button
+            className=" bg-green text-white hover:bg-black hover:text-white my-1 px-4 rounded mt-10"
+            onClick={() => setSortOrder("ASC")}
+          >
             Ascending
           </button>
         </div>
 
-        <button className="DESCbutton" onClick={() => setSortOrder("DESC")}>
+        <button
+          className=" bg-red text-white hover:bg-black hover:text-white my-1 px-4 rounded"
+          onClick={() => setSortOrder("DESC")}
+        >
           Descending
         </button>
       </section>

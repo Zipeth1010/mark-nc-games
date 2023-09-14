@@ -16,10 +16,15 @@ const Header = ({ loggedUser, setLoggedUser }) => {
             className=" h-24 pt-3 z-40"
           />
         </Link>
-        <div className="fixed right-0 flex-row space-x-8 pr-8 pt-5 text-white">
-          <h5 className="UserWelcome">Welcome back {loggedUser}!</h5>
+        <div className="fixed right-0 space-x-10 pr-8 pt-5 text-white items-center">
+          <h5 className=" text-xl font-bold">Welcome back {loggedUser}!</h5>
           <a href="/">
-            <button onClick={logout}>Log out!</button>
+            <button
+              className=" bg-red text-white outline outline-black hover:bg-orange hover:text-white my-2 px-4 rounded"
+              onClick={logout}
+            >
+              Log out!
+            </button>
           </a>
         </div>
       </div>

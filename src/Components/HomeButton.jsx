@@ -1,8 +1,12 @@
+import { Link } from "react-router-dom";
+
 const HomeButton = () => {
   return (
-    <a className="FixedButton" href="/reviews">
-      <button className="Homebutton">Home</button>
-    </a>
+    <Link to="/reviews">
+      <button className=" fixed bottom-5 right-5 outline outline-black bg-white text-orange hover:bg-orange hover:text-white my-2 px-4 rounded">
+        Home
+      </button>
+    </Link>
   );
 };
 

@@ -34,6 +34,30 @@ export const patchVotes = (review_id) => {
     });
 };
 
+export const patchVotesNeg = (review_id) => {
+  return reviewsApi
+    .patch(`/reviews/${review_id}`, { inc_votes: -1 })
+    .then(({ data }) => {
+      return data.updatedReview;
+    });
+};
+
+export const patchCommentVotes = (comment_id) => {
+  return reviewsApi
+    .patch(`/comments/${comment_id}`, { inc_votes: 1 })
+    .then(({ data }) => {
+      return data.updatedComment;
+    });
+};
+
+export const patchCommentVotesNeg = (comment_id) => {
+  return reviewsApi
+    .patch(`/comments/${comment_id}`, { inc_votes: -1 })
+    .then(({ data }) => {
+      return data.updatedComment;
+    });
+};
+
 export const postComment = (comment, review_id) => {
   return reviewsApi
     .post(`/reviews/${review_id}/comments`, comment)

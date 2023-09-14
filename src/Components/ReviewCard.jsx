@@ -42,20 +42,24 @@ const ReviewCard = (review, { loggedUser }) => {
                   {review.title}
                 </h5>
               </Link>
-              <section className=" flow-root">
-                <p class=" float-left mb-3 font-normal text-gray-700 dark:text-gray-400">
+              <section className=" grid grid-cols-2">
+                <p class=" mb-3 font-normal text-gray-700 dark:text-gray-400">
                   Review by: {review.owner}
                 </p>
 
-                <p className="mb-3 float-right">Votes: {review.votes}</p>
-                <p className=" float-left mb-3">Category: {review.category}</p>
-                <p className=" float-right mb-3">
+                <p className="relative top-0 right-0 mb-3 text-right">
+                  Votes: {review.votes}
+                </p>
+
+                <p className=" mb-3">Category: {review.category}</p>
+
+                <p className=" mb-3 text-right">
                   Comment Count: {review.comment_count}
                 </p>
-                <p className=" inline-block justify-center text-center">
-                  Date Created: {convertDate(review.created_at)}
-                </p>
               </section>
+              <p className=" justify-center text-center">
+                Date Created: {convertDate(review.created_at)}
+              </p>
               <section className=" flow-root">
                 <Link
                   to={`/reviews/${review.review_id}`}

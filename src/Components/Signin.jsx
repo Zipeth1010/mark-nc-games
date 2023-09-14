@@ -14,6 +14,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import { getUserApi } from "../api";
+import Loading from "./Loading";
 
 function Copyright(props) {
   return (
@@ -68,7 +69,7 @@ export default function SignIn({ setLoggedUser }) {
   };
 
   return isLoading ? (
-    <p>Loading...</p>
+    <Loading />
   ) : (
     <ThemeProvider theme={theme}>
       <Container

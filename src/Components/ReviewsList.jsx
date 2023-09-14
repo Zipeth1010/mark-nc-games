@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getReviews } from "../api";
-import { Grid } from "@mui/material";
+import { createTheme, Grid } from "@mui/material";
 import ReviewCard from "./ReviewCard";
 import { useSearchParams } from "react-router-dom";
 import Sortby from "./Sortby";
@@ -82,7 +82,7 @@ const ReviewsList = ({ loggedUser, categoryList, setCategoryList }) => {
   ) : (
     <section className=" pt-32 justify-center items-center">
       {showForm ? (
-        <section className=" flex-col pl-80 text-center text-orange">
+        <section className=" flex-col md:pl-80 text-center text-orange">
           <h3 className=" text-2xl font-bold text-white">List of Reviews!</h3>
           <form onSubmit={handleSubmit} className=" text-black">
             <label htmlFor="title" className=" text-white">
@@ -165,7 +165,7 @@ const ReviewsList = ({ loggedUser, categoryList, setCategoryList }) => {
             ></textarea>
             <br />
             <button
-              className=" text-white"
+              className=" bg-white text-orange hover:bg-orange hover:text-white my-2 px-4 rounded"
               type="submit"
               onClick={handleSubmit}
               disabled={isLoading}
@@ -175,10 +175,12 @@ const ReviewsList = ({ loggedUser, categoryList, setCategoryList }) => {
           </form>
         </section>
       ) : (
-        <section className=" pl-96 text-center">
-          <h3 className=" text-white text-2xl font-bold">List of Reviews!</h3>
+        <section className=" md:pl-96 text-center justify-center">
+          <h3 className=" text-white text-2xl font-bold mt-5">
+            List of Reviews!
+          </h3>
           <button
-            className=" text-white text-xl"
+            className=" bg-white text-orange hover:bg-orange hover:text-white my-2 px-4 rounded"
             onClick={(e) => {
               e.preventDefault();
               setShowform(true);
@@ -206,7 +208,7 @@ const ReviewsList = ({ loggedUser, categoryList, setCategoryList }) => {
         setReviewList={setReviewList}
         category={category}
       />
-      <div className=" pl-80 justify-center items-center text-center">
+      <div className=" md:pl-80 py-5 justify-center items-center text-center">
         <Grid
           container
           justifyContent="center"

@@ -1,13 +1,53 @@
 import { Container } from "@mui/system";
 import { useState } from "react";
 import * as api from "../api";
+import { FcLikePlaceholder, FcLike } from "react-icons/fc";
 
 const CommentCard = (
   comment,
   { loggedUser, setCommentList, review_id, setDeleteNotification }
 ) => {
+  const comment_id = comment.comment_id;
   const [error, setError] = useState(false);
   const [hasClicked, setHasClicked] = useState(false);
+  const [hasLiked, setHasLiked] = useState(false);
+  const [commentVotes, setCommentVotes] = useState(comment.votes);
+
+  const addCommentVote = (event) => {
+    event.preventDefault();
+    setHasClicked(true);
+    setError(false);
+    setHasLiked(true);
+    setCommentVotes((currentVotes) => {
+      return currentVotes + 1;
+    });
+    api.patchCommentVotes(comment_id).catch((err) => {
+      setHasClicked(false);
+      setHasLiked(false);
+      setCommentVotes((currentVotes) => {
+        return currentVotes - 1;
+      });
+      setError(true);
+    });
+  };
+
+  const subtractCommentVote = (event) => {
+    event.preventDefault();
+    setHasClicked(true);
+    setError(false);
+    setHasLiked(false);
+    setCommentVotes((currentVotes) => {
+      return currentVotes - 1;
+    });
+    api.patchCommentVotesNeg(comment_id).catch((err) => {
+      setHasClicked(false);
+
+      setCommentVotes((currentVotes) => {
+        return currentVotes - 1;
+      });
+      setError(true);
+    });
+  };
 
   const handleClick = (comment_id) => {
     setHasClicked(true);
@@ -27,12 +67,27 @@ const CommentCard = (
   };
 
   return (
-    <Container maxWidth="xs" className="comment-list">
-      <h4 className="Header4">Comment by: {comment.author}</h4>
+    <Container
+      maxWidth="xs"
+      className=" py-4 outline outline-white rounded-md my-2"
+    >
+      <h4 className=" text-xl font-bold">Comment by: {comment.author}</h4>
       <p>{comment.body}</p>
-      <p>Votes: {comment.votes}</p>
+      <p className=" text-lg font-bold">Votes: {commentVotes}</p>
+      {hasLiked ? (
+        <button onClick={subtractCommentVote}>
+          <svg className=" animate-bounce w-6 h-6">
+            <FcLike />
+          </svg>
+        </button>
+      ) : (
+        <button onClick={addCommentVote} className=" w-12">
+          <FcLikePlaceholder className=" w-12" />
+        </button>
+      )}
       {comment.loggedUser === comment.author ? (
         <button
+          className=" bg-white text-orange hover:bg-orange hover:text-white my-2 px-4 rounded"
           onClick={() => {
             handleClick(comment.comment_id);
           }}
