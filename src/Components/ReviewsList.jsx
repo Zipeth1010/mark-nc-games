@@ -215,7 +215,6 @@ const ReviewsList = ({ loggedUser, categoryList, setCategoryList }) => {
           direction="row"
           alignContent="center"
           columnSpacing={[1]}
-          zeroMinWidth
         >
           {reviewList.map((review) => {
             return (

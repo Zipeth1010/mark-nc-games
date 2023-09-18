@@ -26,7 +26,7 @@ function Copyright(props) {
     >
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        Marks Board-game-reviews!
+        Boardit!
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -42,7 +42,7 @@ const theme = createTheme({
   },
 });
 
-export default function SignIn({ setLoggedUser }) {
+export default function SignIn({ setLoggedUser, setUserDetails }) {
   const [userInput, setUserInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -56,7 +56,10 @@ export default function SignIn({ setLoggedUser }) {
         for (let user of users) {
           if (user.username === userInput) {
             setLoggedUser(userInput);
+            setUserDetails(user);
             localStorage.setItem("user", userInput);
+            localStorage.setItem("userDetails", user);
+            console.log(user);
           }
         }
         setError(true);
