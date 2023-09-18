@@ -12,35 +12,48 @@ import HomeButton from "./Components/HomeButton";
 function App() {
   const [categoryList, setCategoryList] = useState([]);
   const [loggedUser, setLoggedUser] = useState("");
-  console.log(loggedUser);
+  const [userDetails, setUserDetails] = useState(null);
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
+    const userDetails = localStorage.getItem("userDetails");
     if (loggedInUser) {
-      console.log(loggedInUser);
       const foundUser = loggedInUser;
       setLoggedUser(foundUser);
     }
+    if (userDetails) {
+      const foundUserDetails = userDetails;
+      setUserDetails(foundUserDetails);
+    }
   }, []);
+
+  console.log(userDetails);
 
   return (
     <div className="App">
       {!loggedUser ? null : (
-        <Header loggedUser={loggedUser} setLoggedUser={setLoggedUser} />
+        <Header
+          loggedUser={loggedUser}
+          setLoggedUser={setLoggedUser}
+          userDetails={userDetails}
+        />
       )}
       <Routes>
         <Route
           path="/"
           element={
             !loggedUser ? (
-              <SignIn setLoggedUser={setLoggedUser} />
+              <SignIn
+                setLoggedUser={setLoggedUser}
+                setUserDetails={setUserDetails}
+              />
             ) : (
               <div>
-                <CategoriesNav
+                <ReviewsList
+                  loggedUser={loggedUser}
                   setCategoryList={setCategoryList}
                   categoryList={categoryList}
                 />
-                <ReviewsList />
                 <HomeButton />
               </div>
             )
@@ -50,14 +63,17 @@ function App() {
           path="/reviews"
           element={
             !loggedUser ? (
-              <SignIn setLoggedUser={setLoggedUser} />
+              <SignIn
+                setLoggedUser={setLoggedUser}
+                setUserDetails={setUserDetails}
+              />
             ) : (
               <div className="HomeDiv">
-                <CategoriesNav
+                <ReviewsList
+                  loggedUser={loggedUser}
                   setCategoryList={setCategoryList}
                   categoryList={categoryList}
                 />
-                <ReviewsList loggedUser={loggedUser} />
                 <HomeButton />
               </div>
             )
@@ -67,7 +83,10 @@ function App() {
           path="/reviews/:review_id"
           element={
             !loggedUser ? (
-              <SignIn setLoggedUser={setLoggedUser} />
+              <SignIn
+                setLoggedUser={setLoggedUser}
+                setUserDetails={setUserDetails}
+              />
             ) : (
               <div className="FullReviewDiv">
                 <FullReviewCard loggedUser={loggedUser} />
@@ -80,7 +99,10 @@ function App() {
           path="/sign-up"
           element={
             !loggedUser ? (
-              <SignUp setLoggedUser={setLoggedUser} />
+              <SignUp
+                setLoggedUser={setLoggedUser}
+                setUserDetails={setUserDetails}
+              />
             ) : (
               <div>
                 <CategoriesNav

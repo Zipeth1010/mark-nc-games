@@ -12,9 +12,11 @@ const CategoriesNav = ({ setCategoryList, categoryList }) => {
   }, [setCategoryList]);
 
   return (
-    <section className="NavBar">
-      <h3>Category List!</h3>
+    <section className=" flex flex-col md:fixed text-white md:pl-5 justify-center items-center md:z-50">
+      <h2 className=" text-3xl font-bold">Filter/Sort Reviews!</h2>
+      <h3 className=" text-2xl font-bold pt-4">Category Filter:</h3>
       <select
+        className=" text-orange mt-2"
         onChange={(e) => {
           if (e.target.value === "All categories") {
             setSearchCategory([]);
@@ -35,9 +37,11 @@ const CategoriesNav = ({ setCategoryList, categoryList }) => {
           );
         })}
       </select>
-      <button>
+      <button className="  bg-white text-orange hover:bg-orange hover:text-white my-2 px-4 rounded">
         <Link to={`/reviews?category=${searchCategory}`}>Search!</Link>
       </button>
+
+      <br />
     </section>
   );
 };

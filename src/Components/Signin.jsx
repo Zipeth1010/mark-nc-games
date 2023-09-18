@@ -3,6 +3,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
+import { orange } from "@mui/material/colors";
 
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
@@ -13,6 +14,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import { getUserApi } from "../api";
+import Loading from "./Loading";
 
 function Copyright(props) {
   return (
@@ -24,7 +26,7 @@ function Copyright(props) {
     >
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        Marks Board-game-reviews!
+        Boardit!
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -32,9 +34,15 @@ function Copyright(props) {
   );
 }
 
-const theme = createTheme();
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: orange[800],
+    },
+  },
+});
 
-export default function SignIn({ setLoggedUser }) {
+export default function SignIn({ setLoggedUser, setUserDetails }) {
   const [userInput, setUserInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -48,7 +56,10 @@ export default function SignIn({ setLoggedUser }) {
         for (let user of users) {
           if (user.username === userInput) {
             setLoggedUser(userInput);
+            setUserDetails(user);
             localStorage.setItem("user", userInput);
+            localStorage.setItem("userDetails", user);
+            console.log(user);
           }
         }
         setError(true);
@@ -61,10 +72,15 @@ export default function SignIn({ setLoggedUser }) {
   };
 
   return isLoading ? (
-    <p>Loading...</p>
+    <Loading />
   ) : (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container
+        component="main"
+        maxWidth="xs"
+        className=" bg-white"
+        sx={{ pt: 5, pb: 70 }}
+      >
         <CssBaseline />
         <Box
           sx={{
@@ -74,7 +90,7 @@ export default function SignIn({ setLoggedUser }) {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">

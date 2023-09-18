@@ -3,6 +3,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
+import { orange } from "@mui/material/colors";
 
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
@@ -32,7 +33,13 @@ function Copyright(props) {
   );
 }
 
-const theme = createTheme();
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: orange[800],
+    },
+  },
+});
 
 export default function SignUp({ setLoggedUser }) {
   const [username, setUsername] = useState("");
@@ -69,7 +76,12 @@ export default function SignUp({ setLoggedUser }) {
     <p>Loading...</p>
   ) : (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container
+        component="main"
+        maxWidth="xs"
+        className=" bg-white"
+        sx={{ pt: 5, pb: 70 }}
+      >
         <CssBaseline />
         <Box
           sx={{
@@ -79,7 +91,7 @@ export default function SignUp({ setLoggedUser }) {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
