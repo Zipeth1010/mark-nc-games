@@ -12,7 +12,7 @@ import HomeButton from "./Components/HomeButton";
 function App() {
   const [categoryList, setCategoryList] = useState([]);
   const [loggedUser, setLoggedUser] = useState("");
-  const [userDetails, setUserDetails] = useState(null);
+  const [userDetails, setUserDetails] = useState({});
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
@@ -22,12 +22,11 @@ function App() {
       setLoggedUser(foundUser);
     }
     if (userDetails) {
-      const foundUserDetails = userDetails;
-      setUserDetails(foundUserDetails);
+      let userObj = JSON.parse(userDetails);
+      const foundUser = userObj;
+      setUserDetails(foundUser);
     }
   }, []);
-
-  console.log(userDetails);
 
   return (
     <div className="App">

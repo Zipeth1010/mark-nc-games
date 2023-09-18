@@ -58,8 +58,7 @@ export default function SignIn({ setLoggedUser, setUserDetails }) {
             setLoggedUser(userInput);
             setUserDetails(user);
             localStorage.setItem("user", userInput);
-            localStorage.setItem("userDetails", user);
-            console.log(user);
+            localStorage.setItem("userDetails", JSON.stringify(user));
           }
         }
         setError(true);
