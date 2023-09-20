@@ -25,7 +25,7 @@ const FullReviewCard = ({ loggedUser }) => {
     api.patchVotesNeg(review_id).catch((err) => {
       setHasLiked(false);
       setReviewVotes((currentVotes) => {
-        return currentVotes - 1;
+        return currentVotes + 1;
       });
       setError(true);
     });
