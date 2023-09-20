@@ -22,13 +22,16 @@ const FullReviewCard = ({ loggedUser }) => {
     setReviewVotes((currentVotes) => {
       return currentVotes + 1;
     });
-    api.patchVotesNeg(review_id).catch((err) => {
-      setHasLiked(false);
-      setReviewVotes((currentVotes) => {
-        return currentVotes + 1;
+    api
+      .patchVotes(review_id)
+      .then(() => {})
+      .catch((err) => {
+        setHasLiked(false);
+        setReviewVotes((currentVotes) => {
+          return currentVotes + 1;
+        });
+        setError(true);
       });
-      setError(true);
-    });
   };
 
   const subtractVote = (event) => {
@@ -38,7 +41,7 @@ const FullReviewCard = ({ loggedUser }) => {
     setReviewVotes((currentVotes) => {
       return currentVotes - 1;
     });
-    api.patchVotes(review_id).catch((err) => {
+    api.patchVotesNeg(review_id).catch((err) => {
       setReviewVotes((currentVotes) => {
         return currentVotes - 1;
       });
