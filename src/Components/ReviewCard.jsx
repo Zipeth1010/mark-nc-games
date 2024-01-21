@@ -51,21 +51,28 @@ const ReviewCard = (review, { loggedUser }) => {
               </Link>
               <section className=" grid grid-cols-2">
                 <p className=" mb-3 font-normal text-gray-700 dark:text-gray-400">
-                  Review by: {review.owner}
+                  <b>
+                    <i>{review.owner}</i>
+                  </b>
                 </p>
 
                 <p className=" top-0 right-0 mb-3 text-right">
-                  Votes: {review.votes}
+                  <i>Likes: </i> {review.votes}
                 </p>
 
-                <p className=" mb-3">Category: {review.category}</p>
+                <p className=" mb-3">
+                  <i>Category: </i>
+                  {review.category}
+                </p>
 
                 <p className=" mb-3 text-right">
-                  Comment Count: {review.comment_count}
+                  <i>Comments: </i>
+
+                  {review.comment_count}
                 </p>
               </section>
               <p className=" justify-center text-center">
-                Date Created: {convertDate(review.created_at)}
+                {convertDate(review.created_at)}
               </p>
               <section className=" flow-root">
                 <Link

@@ -69,33 +69,37 @@ const CommentCard = (
   return (
     <Container
       maxWidth="xs"
-      className=" py-4 outline outline-white rounded-md my-2"
+      className=" py-4 border border-black bg-white text-black rounded-md my-2"
     >
-      <h4 className=" text-xl font-bold">Comment by: {comment.author}</h4>
+      <h4 className=" text-xl font-bold">{comment.author}</h4>
       <p>{comment.body}</p>
-      <p className=" text-lg font-bold">Votes: {commentVotes}</p>
-      {hasLiked ? (
-        <button onClick={subtractCommentVote}>
-          <svg className=" animate-bounce w-6 h-6">
-            <FcLike />
-          </svg>
-        </button>
-      ) : (
-        <button onClick={addCommentVote} className=" w-12">
-          <FcLikePlaceholder className=" w-12" />
-        </button>
-      )}
-      {comment.loggedUser === comment.author ? (
-        <button
-          className=" bg-white text-orange hover:bg-orange hover:text-white my-2 px-4 rounded"
-          onClick={() => {
-            handleClick(comment.comment_id);
-          }}
-          disabled={hasClicked}
-        >
-          Delete Comment!
-        </button>
-      ) : null}
+      <p className=" text-lg font-bold mb-2">
+        <i>Likes:</i> {commentVotes}
+      </p>
+      <section className="">
+        {hasLiked ? (
+          <button onClick={subtractCommentVote} className="">
+            <svg className=" animate-bounce w-6 h-6">
+              <FcLike />
+            </svg>
+          </button>
+        ) : (
+          <button onClick={addCommentVote} className=" w-12">
+            <FcLikePlaceholder className=" w-12" />
+          </button>
+        )}
+        {comment.loggedUser === comment.author ? (
+          <button
+            className=" bg-red text-white hover:bg-white hover:text-red my-2 px-4 rounded ml-12"
+            onClick={() => {
+              handleClick(comment.comment_id);
+            }}
+            disabled={hasClicked}
+          >
+            X
+          </button>
+        ) : null}
+      </section>
       {error ? <p>Something went wrong, try again another time!</p> : null}
     </Container>
   );

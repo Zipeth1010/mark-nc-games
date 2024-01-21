@@ -53,7 +53,7 @@ const CommentList = ({ review_id, loggedUser }) => {
                 id="body"
                 value={commentBody}
                 cols="28"
-                className=" text-orange font-bold"
+                className=" shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                 onChange={(event) => {
                   setCommentBody(event.target.value);
                 }}
@@ -63,7 +63,7 @@ const CommentList = ({ review_id, loggedUser }) => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className=" bg-white text-orange hover:bg-orange hover:text-white py-2 px-4 rounded"
+                className=" bg-white text-orange hover:bg-orange hover:text-white py-2 px-4 border border-black rounded"
               >
                 Submit!
               </button>

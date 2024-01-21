@@ -80,98 +80,151 @@ const ReviewsList = ({ loggedUser, categoryList, setCategoryList }) => {
   return isLoading ? (
     <Loading />
   ) : (
-    <section className=" pt-32 justify-center items-center">
+    <section className="pt-8 justify-center items-center mt-28">
+      <section className=" md:fixed pt-28 md:pl-6">
+        <CategoriesNav
+          categoryList={categoryList}
+          setCategoryList={setCategoryList}
+        />
+        <Sortby
+          reviewList={reviewList}
+          setReviewList={setReviewList}
+          category={category}
+        />
+      </section>
       {showForm ? (
         <section className=" flex-col md:pl-80 text-center text-orange">
-          <h3 className=" text-2xl font-bold text-white">List of Reviews!</h3>
-          <form onSubmit={handleSubmit} className=" text-black">
-            <label htmlFor="title" className=" text-white">
-              Game Title:{" "}
-            </label>
-            <input
-              id="title"
-              placeholder="Title"
-              value={title}
-              onChange={(e) => {
-                setTitle(e.target.value);
-              }}
-              required
-            ></input>
-            <br />
-            <label htmlFor="selectCategory" className=" text-white">
-              Game Category:{" "}
-            </label>
-            <select
-              className="Categoryselect"
-              onChange={(e) => {
-                if (e.target.value === "Select your category") {
-                  setChosenCategory(e.target.value);
-                } else {
-                  const cat = selectCategory?.find(
-                    (x) => x.slug === e.target.value
+          <h3 className="text-white text-2xl font-bold mt-5">
+            List of Reviews!
+          </h3>
+          <form
+            onSubmit={handleSubmit}
+            className=" text-black p-2 max-w-sm mx-auto"
+          >
+            <div className=" mb-5">
+              <label
+                htmlFor="title"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Game Title*:{" "}
+              </label>
+              <input
+                id="title"
+                placeholder="Title"
+                className=" shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                value={title}
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
+                required
+              ></input>
+            </div>
+            <div className=" mb-5">
+              <label
+                htmlFor="selectCategory"
+                className=" block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Game Category*:{" "}
+              </label>
+              <select
+                className=" shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                onChange={(e) => {
+                  if (e.target.value === "Select your category") {
+                    setChosenCategory(e.target.value);
+                  } else {
+                    const cat = selectCategory?.find(
+                      (x) => x.slug === e.target.value
+                    );
+                    setChosenCategory(cat.slug);
+                  }
+                }}
+                required
+              >
+                <option>Select your Category</option>
+                {selectCategory.map((category) => {
+                  return (
+                    <option value={category.slug} key={category.slug}>
+                      {category.slug}
+                    </option>
                   );
-                  setChosenCategory(cat.slug);
-                }
-              }}
-              required
-            >
-              <option>Select your Category</option>
-              {selectCategory.map((category) => {
-                return (
-                  <option value={category.slug} key={category.slug}>
-                    {category.slug}
-                  </option>
-                );
-              })}
-            </select>
-            <br />
-            <label htmlFor="designer" className=" text-white">
-              Designer:{" "}
-            </label>
-            <input
-              id="designer"
-              placeholder="Designer"
-              value={designer}
-              onChange={(e) => {
-                setDesigner(e.target.value);
-              }}
-              required
-            ></input>
-            <br />
-            <label htmlFor="reviewimg" className=" text-white">
-              Game Image:{" "}
-            </label>
-            <input
-              id="reviewimg"
-              placeholder="Image of the Game"
-              value={reviewImage}
-              onChange={(e) => {
-                setReviewImage(e.target.value);
-              }}
-              required
-            ></input>
-            <br />
-            <label htmlFor="reviewbody" className=" text-white">
-              Review:{" "}
-            </label>
-            <textarea
-              id="reviewbody"
-              placeholder="Review Text"
-              value={reviewBody}
-              onChange={(e) => {
-                setReviewBody(e.target.value);
-              }}
-              required
-            ></textarea>
-            <br />
-            <button
-              className=" bg-white text-orange hover:bg-orange hover:text-white my-2 px-4 rounded"
-              type="submit"
-              onClick={handleSubmit}
-              disabled={isLoading}
-            >
-              Submit review!
-            </button>
+                })}
+              </select>
+            </div>
+            <div className=" mb-5">
+              <label
+                htmlFor="designer"
+                className=" block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Designer*:{" "}
+              </label>
+              <input
+                id="designer"
+                placeholder="Designer"
+                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                value={designer}
+                onChange={(e) => {
+                  setDesigner(e.target.value);
+                }}
+                required
+              ></input>
+              <br />
+            </div>
+            <div className=" mb-5">
+              <label
+                htmlFor="reviewimg"
+                className=" block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Game Image URL*:{" "}
+              </label>
+              <input
+                id="reviewimg"
+                placeholder="Image of the Game"
+                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                value={reviewImage}
+                onChange={(e) => {
+                  setReviewImage(e.target.value);
+                }}
+                required
+              ></input>
+            </div>
+            <div className=" mb-5">
+              <label
+                htmlFor="reviewbody"
+                className=" block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Review*:{" "}
+              </label>
+              <textarea
+                id="reviewbody"
+                placeholder="Review Text"
+                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                value={reviewBody}
+                onChange={(e) => {
+                  setReviewBody(e.target.value);
+                }}
+                required
+              ></textarea>
+            </div>
+            <div className=" mb-5">
+              <button
+                className=" bg-white text-orange hover:bg-orange hover:text-white my-2 px-4 border border-black rounded"
+                type="submit"
+                onClick={handleSubmit}
+                disabled={isLoading}
+              >
+                Submit review!
+              </button>
+              <button
+                className=" bg-red text-white hover:bg-white hover:text-red px-4 rounded border border-black ml-10"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setShowform(false);
+                  setIsError(false);
+                }}
+              >
+                X
+              </button>
+            </div>
           </form>
         </section>
       ) : (
@@ -192,22 +245,15 @@ const ReviewsList = ({ loggedUser, categoryList, setCategoryList }) => {
         </section>
       )}
       {isError ? (
-        <p>There was an error with your submission, please try again!</p>
+        <p className=" text-center justify-center md:pl-96 text-white py-4">
+          There was an error with your submission, please try again!
+        </p>
       ) : null}
       {isSuccess ? (
-        <h5 className=" text-center justify-center pl-96 text-white">
+        <h5 className=" text-center justify-center md:pl-96 text-white py-4">
           Thanks a lot for your review!
         </h5>
       ) : null}
-      <CategoriesNav
-        categoryList={categoryList}
-        setCategoryList={setCategoryList}
-      />
-      <Sortby
-        reviewList={reviewList}
-        setReviewList={setReviewList}
-        category={category}
-      />
       <div className=" md:pl-80 py-5 justify-center items-center text-center">
         <Grid
           container

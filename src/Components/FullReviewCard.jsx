@@ -65,7 +65,7 @@ const FullReviewCard = ({ loggedUser }) => {
     <section className=" flex flex-col pt-36 items-center justify-center">
       <section
         href="#"
-        className="flex flex-col align-middle items-center bg-white border border-gray-200 rounded-lg shadow xl:flex-row w-[90%] md:w-[75%] hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+        className="flex flex-col align-middle items-center bg-white outline rounded-lg shadow xl:flex-row w-[90%] md:w-[75%] hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
       >
         <img
           className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-auto md:rounded-none md:rounded-l-lg"
