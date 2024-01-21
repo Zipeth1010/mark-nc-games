@@ -81,7 +81,7 @@ const ReviewsList = ({ loggedUser, categoryList, setCategoryList }) => {
     <Loading />
   ) : (
     <section className="pt-8 justify-center items-center mt-28">
-      <section className=" md:fixed pt-28 md:pl-6">
+      <section className=" md:fixed md:pt-32 md:pl-6">
         <CategoriesNav
           categoryList={categoryList}
           setCategoryList={setCategoryList}
