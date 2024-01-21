@@ -71,13 +71,14 @@ const ReviewCard = (review, { loggedUser }) => {
                   {review.comment_count}
                 </p>
               </section>
-              <p className=" justify-center text-center">
+              <p className=" justify-center">
+                <i>Date: </i>
                 {convertDate(review.created_at)}
               </p>
-              <section className=" flow-root">
+              <section className=" flow-root pt-6">
                 <Link
                   to={`/reviews/${review.review_id}`}
-                  className=" float-left items-center px-3 py-2 text-sm font-bold text-center bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className=" float-left items-center text-sm font-bold text-center bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   Read more
                   <svg

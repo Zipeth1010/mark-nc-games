@@ -94,7 +94,7 @@ const ReviewsList = ({ loggedUser, categoryList, setCategoryList }) => {
       </section>
       {showForm ? (
         <section className=" flex-col md:pl-80 text-center text-orange">
-          <h3 className="text-white text-2xl font-bold mt-5">
+          <h3 className="text-white text-4xl font-bold mt-5">
             List of Reviews!
           </h3>
           <form
@@ -229,11 +229,11 @@ const ReviewsList = ({ loggedUser, categoryList, setCategoryList }) => {
         </section>
       ) : (
         <section className=" md:pl-96 text-center justify-center">
-          <h3 className=" text-white text-2xl font-bold mt-5">
+          <h2 className=" text-white text-4xl font-bold mt-5">
             List of Reviews!
-          </h3>
+          </h2>
           <button
-            className=" bg-white text-orange hover:bg-orange hover:text-white my-2 px-4 rounded"
+            className=" bg-white text-orange hover:bg-orange hover:text-white my-2 px-4 border border-black rounded"
             onClick={(e) => {
               e.preventDefault();
               setShowform(true);
